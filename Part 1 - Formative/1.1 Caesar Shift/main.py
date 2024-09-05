@@ -5,19 +5,14 @@ alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 def caesar_encode(text, n):
     temp = ""
-    for let in text:
-        index = alpha.index(let)
-        temp += alpha[index + n] % 26
-    return temp
-
-"""    for i in range(len(text)):
+    for i in range(len(text)):
         for y in range(len(alpha)):
             if text[i] == alpha[y]:
                 if y > len(alpha) - n:
                     temp += alpha[n - 26 % y]
                 else:
                     temp += alpha[y + n]
-    return temp"""
+    return temp
 
 
 
