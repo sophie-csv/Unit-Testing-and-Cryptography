@@ -7,10 +7,22 @@ from main import caesar_encode
 
 class TestCaesarEncode(TestCase):
     def test_caesar_encode_with_spaces(self):
-        self.assertEqual(insert_string("HEL LO", 3), "MJQQT")
+        self.assertEqual(caesar_encode("HEL LO", 3), "KHO OR")
 
-    def test_insert_string_two_words_with_uppercase(self):
-        self.assertEqual(insert_string("apple", "ORANGE"), "apORANGEple")
+    def test_caesar_encode_with_lower(self):
+        self.assertEqual(caesar_encode("hello", 3), "KHOOR")
 
-    def test_insert_string_empty_insert(self):
-        self.assertEqual(insert_string("apple", ""), "apple")
+    def test_caesar_encode_with_numbers(self):
+        self.assertEqual(caesar_encode("3", 3), "3")
+
+    def test_caesar_encode_with_none(self):
+        self.assertEqual(caesar_encode("",""), "")
+
+    def test_caesar_encode_with_switched(self):
+        self.assertEqual(caesar_encode("3", "hello"), "3")
+
+    def test_caesar_encode_with_negative_numbers(self):
+        self.assertEqual(caesar_encode("HELLO", -1), "GDKKN")
+
+    def test_caesar_encode_with_punctuation(self):
+        self.assertEqual(caesar_encode("HELLO!", 3), "KHOOR$")

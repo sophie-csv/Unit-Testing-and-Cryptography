@@ -1,11 +1,17 @@
 # Read the instructions to see what you need to do here!
 
-alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:"<>?'
+
 
 
 def caesar_encode(text, n):
+    if text.isdigit():
+        return text
+    text = text.upper()
     temp = ""
     for i in range(len(text)):
+        if text[i] == " ":
+            temp += " "
         for y in range(len(alpha)):
             if text[i] == alpha[y]:
                 if y > len(alpha) - n:
