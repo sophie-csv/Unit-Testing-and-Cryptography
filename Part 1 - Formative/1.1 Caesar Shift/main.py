@@ -23,8 +23,13 @@ def caesar_encode(text, n):
 
 
 def caesar_decode(text, n):
+    if text.isdigit():
+        return text
+    text = text.upper()
     temp = ""
     for i in range(len(text)):
+        if text[i] == " ":
+            temp += " "
         for y in range(len(alpha)):
             if text[i] == alpha[y]:
                 if y > len(alpha) + n:
@@ -32,6 +37,8 @@ def caesar_decode(text, n):
                 else:
                     temp += alpha[y - n]
     return temp
+
+
 
 
 test = "HELLOWORLD"
