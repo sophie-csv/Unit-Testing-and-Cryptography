@@ -1,8 +1,9 @@
 # Read the instructions to see what you need to do here!
 
 alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-
+# go down the column and add the index of t + t index and find the sum from the alpha
 def vig_encode(text, keyword):
+
   return ""
 
 

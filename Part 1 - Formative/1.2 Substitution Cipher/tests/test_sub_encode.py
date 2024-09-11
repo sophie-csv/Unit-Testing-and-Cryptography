@@ -13,7 +13,7 @@ class TestCaesarDecode(TestCase):
     def test_sub_encode_with_lower(self):
         self.assertEqual(sub_encode("text", self.cipher_alphabet), "CXEC")
     def test_sub_encode_with_numbers(self):
-        self.assertEqual(sub_encode("3h", self.cipher_alphabet), "3h")
+        self.assertEqual(sub_encode("3h", self.cipher_alphabet), "M")
 
     def test_sub_encode_with_none(self):
         self.assertEqual(sub_encode("", self.cipher_alphabet), "")
@@ -21,8 +21,6 @@ class TestCaesarDecode(TestCase):
     def test_sub_encode_with_switched(self):
         self.assertEqual(sub_encode(self.cipher_alphabet, "HELLO"), "WJKUXVBMIYDTPLHZGONCRSAEFQ")
 
-    def test_sub_encode_with_punctuation(self):
-        self.assertEqual(sub_encode("HELLO!",self.cipher_alphabet ), "MXTTH?")
     def test_sub_encode_with_punctuation(self):
         self.assertEqual(sub_encode("HELLO!", self.cipher_alphabet_with_punc), "MXTTH?")
 

@@ -18,6 +18,9 @@ def sub_encode(text, codebet):
 
 
 def sub_decode(text, codebet):
+    if text.isdigit() or len(text) > len(codebet):
+        return text
+    text = text.upper()
     temp = ""
     for i in range(len(text)):
         if text[i] == " ":
