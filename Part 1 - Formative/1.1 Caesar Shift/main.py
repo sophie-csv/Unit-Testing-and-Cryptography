@@ -5,6 +5,12 @@ alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:"<>?'
 
 
 def caesar_encode(text, n):
+    """
+    Encodes text using Ceasar shift.
+    :param text: Text to e encoded.
+    :param n: Number to shift.
+    :return: Encoded text.
+    """
     if text.isdigit():
         return text
     text = text.upper()
@@ -23,6 +29,12 @@ def caesar_encode(text, n):
 
 
 def caesar_decode(text, n):
+    """
+    Decodes text using Ceasar shift.
+    :param text: Text to be decoded.
+    :param n: Number to shift.
+    :return: Decoded text.
+    """
     if text.isdigit():
         return text
     text = text.upper()

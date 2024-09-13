@@ -3,6 +3,12 @@
 alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # go down the column and add the index of t + t index and find the sum from the alpha
 def vig_encode(text, keyword):
+  """
+  Uses the keyword to encode text. Will take the index of both and add it to find corresponding alpha index.
+  :param text: The text to be encoded
+  :param keyword: The keyword to compare the text to
+  :return: Encoded text
+  """
   temp = ""
   for i in range(len(text)):
     for y in range(len(alpha)):
@@ -15,6 +21,12 @@ def vig_encode(text, keyword):
 
 
 def vig_decode(text, keyword):
+  """
+  Decodes the text. Will take the index of both and add it to find corresponding alpha index.
+  :param text: the text to be decoded
+  :param keyword: The keyword to compare the text to
+  :return: Decoded text
+  """
   temp = ""
   for i in range(len(text)):
     for y in range(len(alpha)):
