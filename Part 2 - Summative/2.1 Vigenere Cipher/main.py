@@ -26,8 +26,6 @@ def vig_encode(text, keyword):
 
 
 def vig_decode(text, keyword):
-  if text.isdigit():
-    return text
   text = text.upper()
   """
   Decodes the text. Will take the index of both and add it to find corresponding alpha index.
@@ -37,12 +35,13 @@ def vig_decode(text, keyword):
   """
   temp = ""
   for i in range(len(text)):
-    for y in range(len(alpha)):
-      if text[i] == alpha[y]:
-        index1 = y
-        index2 = alpha.index(keyword[i % len(keyword)])
-        letter = alpha[(index1 - index2) % 27]
-        temp += letter
+    if text[i] in alpha:
+      index1 = alpha.index(text[i])
+      index2 = alpha.index(keyword[i % len(keyword)])
+      letter = alpha[(index1 - index2) % 27]
+      temp += letter
+    else:
+      temp += text[i]
   return temp
 
 
