@@ -48,10 +48,20 @@ print(dec)
 # PART 2
 # These  are the functions you'll need to write:
 def convert_to_num(ngram):
-    return 0
+    temp = 0
+    for i in range(len(ngram)):
+        index = alpha.index(ngram[i])
+        index = 26 ** i * index
+        temp += index
+    return temp
 
 def convert_to_text(num, n):
-    return ''
+    temp = ""
+    while num > 0:
+        temp += alpha[int(num % 26)]
+        num = num // 26
+
+    return temp
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
 l = len(test)
@@ -67,7 +77,13 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
-    return ''
+    temp = ""
+    for i in range(n):
+        letter = (alpha.index(text[i]) + b) % 26**i
+
+
+
+
 
 def affine_n_decode(text, n, a, b):
     return ''
