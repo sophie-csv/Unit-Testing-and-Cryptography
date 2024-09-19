@@ -78,20 +78,34 @@ print(answer)
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
     temp = ""
-    for i in range(n):
-        letter = (alpha.index(text[i]) + b) % 26**i
-
-
-
+    index = 0
+    while index < len(text):
+        if n % 2 == 1:
+            text += "X"
+        ngram = text[index: index + n]
+        x = convert_to_num(ngram)
+        number = (a * x + b) % (26**n)
+        temp += convert_to_text(number, n)
+        index += n
+    return temp
 
 
 def affine_n_decode(text, n, a, b):
-    return ''
+    temp = ""
+    index = 0
+    while len(temp) < len(text):
+        ngram = text[index: index + n]
+        x = convert_to_num(ngram)
+        number = (x - b) * mod_inverse(a, (26**n)) % 26**n
+        temp += convert_to_text(number, n)
+        index += n
+    return temp
+
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
-n = 5
-a = 347
-b = 1721
+n = 2
+a = 3
+b = 121
 enc = affine_n_encode(test, n, a, b)
 dec = affine_n_decode(enc, n, a, b)
 print(enc, dec)
