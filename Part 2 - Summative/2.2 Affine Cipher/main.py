@@ -14,6 +14,7 @@ def mod_inverse_helper(a, b):
     return (v, -1 * q * v + u)
 
 def mod_inverse(a, m):
+
     assert math.gcd(a, m) == 1, "You're trying to invert " + str(a) + " in mod " + str(m) + " and that doesn't work!"
     return mod_inverse_helper(m, a)[1] % m
 
@@ -29,6 +30,7 @@ def affine_encode(text, a, b):
 
 def affine_decode(text, a, b):
     temp = ""
+
     for i in range(len(text)):
         letter = (mod_inverse(a,26) * (alpha.index(text[i]) - b)) % 26
         temp += alpha[letter]
