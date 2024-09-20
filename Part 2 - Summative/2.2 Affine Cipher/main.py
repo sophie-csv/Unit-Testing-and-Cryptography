@@ -81,14 +81,13 @@ print(answer)
 def affine_n_encode(text, n, a, b):
     temp = ""
     index = 0
-    while index < len(text):
-        if n % 2 == 1:
-            text += "X"
-        ngram = text[index: index + n]
+    while (len(text) % n) != 0:
+        text += "X"
+    for i in range(0, len(text), n):
+        ngram = text[i: i + n]
         x = convert_to_num(ngram)
         number = (a * x + b) % (26**n)
         temp += convert_to_text(number, n)
-        index += n
     return temp
 
 
@@ -105,7 +104,7 @@ def affine_n_decode(text, n, a, b):
 
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
-n = 2
+n = 3
 a = 3
 b = 121
 enc = affine_n_encode(test, n, a, b)
