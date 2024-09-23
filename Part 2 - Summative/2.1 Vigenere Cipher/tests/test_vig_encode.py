@@ -7,7 +7,7 @@ from main import vig_encode
 
 class TestVigEncode(TestCase):
     def test_vig_encode_with_spaces(self):
-        self.assertEqual(vig_encode("THE QUICK", "TEST"), "LLWSIY VC")
+        self.assertEqual(vig_encode("THE QUICK", 2, 3), "LLWSIY VC")
     def test_vig_encode_with_lower(self):
         self.assertEqual(vig_encode("THE quick", "TEST"), "LLWSIY VC")
 

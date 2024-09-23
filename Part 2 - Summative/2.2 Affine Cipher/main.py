@@ -22,9 +22,11 @@ def mod_inverse(a, m):
 # These are the functions you'll need to write:
 def affine_encode(text, a, b):
     temp = ""
+    text.upper()
     for i in range(len(text)):
-        letter = (a * alpha.index(text[i]) + b) % 26
-        temp += alpha[letter]
+        if text[i] in alpha:
+            letter = (a * alpha.index(text[i]) + b) % 26
+            temp += alpha[letter]
     return temp
 
 
