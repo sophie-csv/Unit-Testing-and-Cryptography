@@ -59,7 +59,7 @@ def convert_to_num(ngram):
 
 def convert_to_text(num, n):
     temp = ""
-    while num > 0:
+    for i in range(n):
         temp += alpha[int(num % 26)]
         num = num // 26
 
@@ -81,7 +81,7 @@ print(answer)
 def affine_n_encode(text, n, a, b):
     temp = ""
     index = 0
-    while (len(text) % n) != 0:
+    while len(text) % n != 0:
         text += "X"
     for i in range(0, len(text), n):
         ngram = text[i: i + n]
@@ -104,8 +104,8 @@ def affine_n_decode(text, n, a, b):
 
 
 test = "THEQUICKBROWNFOXJUMPEDOVERTHELAZYDOG"
-n = 3
-a = 3
+n = 2
+a = 5
 b = 121
 enc = affine_n_encode(test, n, a, b)
 dec = affine_n_decode(enc, n, a, b)
