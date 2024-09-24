@@ -21,6 +21,13 @@ def mod_inverse(a, m):
 
 # These are the functions you'll need to write:
 def affine_encode(text, a, b):
+    """
+    Encodes text using the affine cipher rules and ceasar shift.
+    :param text: Text wanted o be encoded with the affine cipher rules.
+    :param a: a is less than 26 and shares no factors in common with the number 26
+    :param b: n number of letter to shift right (ceasar shift) wanted
+    :return: encoded text
+    """
     temp = ""
     text.upper()
     for i in range(len(text)):
@@ -31,11 +38,19 @@ def affine_encode(text, a, b):
 
 
 def affine_decode(text, a, b):
+    """
+    Decodes text using the affine cipher rules and ceasar shift.
+    :param text: Text wanted to be decoded with the affine cipher rules.
+    :param a: a is less than 26 and shares no factors in common with the number 26.
+    :param b: n number of letter to shift left (ceasar shift) wanted
+    :return: decoded text 
+    """
     temp = ""
-
+    text.upper()
     for i in range(len(text)):
-        letter = (mod_inverse(a,26) * (alpha.index(text[i]) - b)) % 26
-        temp += alpha[letter]
+        if text[i] in alpha:
+            letter = (mod_inverse(a,26) * (alpha.index(text[i]) - b)) % 26
+            temp += alpha[letter]
     return temp
 
 test = "HELLOWORLD"
@@ -52,6 +67,11 @@ print(dec)
 # PART 2
 # These  are the functions you'll need to write:
 def convert_to_num(ngram):
+    """
+    Converting the ngram text to an integer equivalent.
+    :param ngram: ngram text to convert.
+    :return: integer equivalent of the ngram text.
+    """
     temp = 0
     for i in range(len(ngram)):
         index = alpha.index(ngram[i])
@@ -60,6 +80,12 @@ def convert_to_num(ngram):
     return temp
 
 def convert_to_text(num, n):
+    """
+    Converting the integer to a ngram text.
+    :param num: the integer wanted to convert to text.
+    :param n: n-grams in text.
+    :return: text version of the ngram int.
+    """
     temp = ""
     for i in range(n):
         temp += alpha[int(num % 26)]
@@ -81,6 +107,14 @@ print(answer)
 
 # These are the functions you'll need to write:
 def affine_n_encode(text, n, a, b):
+    """
+    Encodes text using a combination of ceasar shift and affine cipher with n-grams.
+    :param text: Text wanted to be encoded with affine rules and split into n-grams
+    :param n: number of n-grams
+    :param a: a is less than 26 and shares no factors in common with the number 26.
+    :param b: n number of letters to shift right (ceasar shift) wanted
+    :return: encoded text.
+    """
     temp = ""
     index = 0
     while len(text) % n != 0:
@@ -94,6 +128,14 @@ def affine_n_encode(text, n, a, b):
 
 
 def affine_n_decode(text, n, a, b):
+    """
+    Decodes text using a combination of ceasar shift and affine cipher with n-grams.
+    :param text: Text wanted to be decoded with affine rules and split into n-grams
+    :param n: number of n-grams
+    :param a: a is less than 26 and shares no factors in common with the number 26.
+    :param b: n number of letters to shift left (ceasar shift) wanted
+    :return: decoded text.
+    """
     temp = ""
     index = 0
     while len(temp) < len(text):

@@ -4,6 +4,12 @@ alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+{}|:"<>?'
 
 
 def sub_encode(text, codebet):
+    """
+    Encodes the text with substitution cipher and using the alphabet codebet to compare indices and add together to get the final indice.
+    :param text: text to be encoded
+    :param codebet: Alphabet used to compare indices.
+    :return: encoded text
+    """
     if text.isdigit() or len(text) > len(codebet):
         return text
     text = text.upper()
@@ -18,6 +24,12 @@ def sub_encode(text, codebet):
 
 
 def sub_decode(text, codebet):
+    """
+    Decodes the text with substitution cipher and using the alphabet codebet to compare indices and add together to get the final indice.
+    :param text: text to be decoded.
+    :param codebet: Alphabet used to compare indices.
+    :return: decoded text.
+    """
     if text.isdigit() or len(text) > len(codebet):
         return text
     text = text.upper()
